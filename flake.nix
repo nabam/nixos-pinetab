@@ -64,7 +64,7 @@
     // inputs.utils.lib.eachDefaultSystem (system: {
       # Set buildPlatform to "x86_64-linux" to benefit from cross-compiled packages in the cache.
       packages = {
-        default = self.packages.${system}.pinetab2-gnome;
+        default = self.packages.${system}."PineTab2";
       } // images "x86_64-linux";
 
       formatter = (import inputs.nixpkgs { inherit system; }).nixfmt-rfc-style;
