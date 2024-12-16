@@ -34,6 +34,18 @@
             inputs.rockchip.nixosModules.noZFS
           ];
         };
+        "pinetab2-phosh" = {
+          # Use cross-compilation for uBoot and Kernel.
+          uBoot = inputs.rockchip.packages.${buildPlatform}.uBootPineTab2;
+          kernel = inputs.rockchip.legacyPackages.${buildPlatform}.kernel_linux_6_12_pinetab;
+          firmware = [ inputs.rockchip.packages.${buildPlatform}.bes2600 ];
+
+          extraModules = [
+            ./pinetab2-phosh.nix
+            inputs.rockchip.nixosModules.dtOverlayPCIeFix
+            inputs.rockchip.nixosModules.noZFS
+          ];
+        };
       };
 
       osConfigs =
@@ -64,7 +76,7 @@
     // inputs.utils.lib.eachDefaultSystem (system: {
       # Set buildPlatform to "x86_64-linux" to benefit from cross-compiled packages in the cache.
       packages = {
-        default = self.packages.${system}."pinetab2-gnome";
+        default = self.packages.${system}."pinetab2-phosh";
       } // images "x86_64-linux";
 
       formatter = (import inputs.nixpkgs { inherit system; }).nixfmt-rfc-style;

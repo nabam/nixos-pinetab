@@ -7,7 +7,14 @@
 {
   system.stateVersion = "24.11";
 
-  networking.hostName = "pinetab2-gnome";
+  networking.hostName = "pinetab2-posh";
+
+  programs.calls.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    gnome-console # Terminal
+    cachix
+  ];
 
   users.users.pinetab2 = {
     initialPassword = "changeme";
@@ -39,8 +46,11 @@
   services = {
     xserver = {
       enable = true;
-      desktopManager.gnome.enable = true;
-      displayManager.gdm.enable = true;
+      desktopManager.phosh = {
+        enable = true;
+        user = "pinetab2";
+        group = "users";
+      };
     };
 
     automatic-timezoned.enable = true;
@@ -63,22 +73,9 @@
   };
 
   hardware.pulseaudio.enable = false;
+  hardware.sensor.iio.enable = true;
   security.rtkit.enable = true;
   security.sudo.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    cachix
-    firefox
-    gnomeExtensions.arc-menu
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.gjs-osk
-    gnomeExtensions.one-window-wonderland
-  ];
-
-  environment.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = "1";
-  };
 
   nix.settings = {
     experimental-features = [
