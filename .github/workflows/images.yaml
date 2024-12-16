@@ -1,12 +1,7 @@
 name: "Release Images"
+
 on:
-  workflow_run:
-    workflows: [Update Flakes]
-    types:
-    - completed
-  push:
-    branches:
-    - main
+  workflow_dispatch: {}
 
 permissions:
   contents: write
