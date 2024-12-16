@@ -51,7 +51,7 @@ jobs:
     strategy:
       matrix:
         device:
-        - PineTab2
+        - pinetab2-gnome
     runs-on: ubuntu-24.04
     steps:
     - name: Free disk space

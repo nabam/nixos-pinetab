@@ -22,7 +22,7 @@
     { self, ... }@inputs:
     let
       devices = buildPlatform: {
-        "PineTab2" = {
+        "pinetab2-gnome" = {
           # Use cross-compilation for uBoot and Kernel.
           uBoot = inputs.rockchip.packages.${buildPlatform}.uBootPineTab2;
           kernel = inputs.rockchip.legacyPackages.${buildPlatform}.kernel_linux_6_12_pinetab;
@@ -64,7 +64,7 @@
     // inputs.utils.lib.eachDefaultSystem (system: {
       # Set buildPlatform to "x86_64-linux" to benefit from cross-compiled packages in the cache.
       packages = {
-        default = self.packages.${system}."PineTab2";
+        default = self.packages.${system}."pinetab2-gnome";
       } // images "x86_64-linux";
 
       formatter = (import inputs.nixpkgs { inherit system; }).nixfmt-rfc-style;
