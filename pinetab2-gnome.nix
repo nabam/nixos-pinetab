@@ -25,9 +25,6 @@
     "rw"
   ];
 
-  boot.loader.generic-extlinux-compatible.enable = true;
-  boot.loader.grub.enable = false;
-
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
@@ -48,9 +45,6 @@
 
     automatic-timezoned.enable = true;
     geoclue2.enableDemoAgent = lib.mkForce true;
-
-    flatpak.enable = true;
-    printing.enable = true;
 
     avahi = {
       enable = true;
@@ -74,13 +68,11 @@
 
   environment.systemPackages = with pkgs; [
     cachix
-    firefox
     gnomeExtensions.arc-menu
     gnomeExtensions.dash-to-dock
     gnomeExtensions.dash-to-panel
     gnomeExtensions.gjs-osk
     gnomeExtensions.one-window-wonderland
-    htop
   ];
 
   environment.sessionVariables = {
