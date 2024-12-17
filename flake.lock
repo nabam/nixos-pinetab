@@ -55,11 +55,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1734373092,
-        "narHash": "sha256-Q6EbvYmFqsSaIqUedenpdI629F44V47lpL0BM4Fqkcs=",
+        "lastModified": 1734386018,
+        "narHash": "sha256-IVvztraBGlyxw575M0Dpchxa3Y/g/0Jc/ryrEexle8Q=",
         "owner": "nabam",
         "repo": "nixos-rockchip",
-        "rev": "13ac1d7e278c2c01aaaeb15cb122f2487ed1e123",
+        "rev": "5ad8f90b8e2e0851ece3074ffd5acd85edb449a8",
         "type": "github"
       },
       "original": {
